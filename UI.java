@@ -3,20 +3,22 @@ import java.awt.*;
 import javax.swing.*;
 
 public class UI{
-    GameManager gameManager;
+    GameManager gm;
 
     JFrame window;
     public JTextArea messageText;
+    public JTextField inputBox;
     public JPanel bgPanel[] = new JPanel[4]; 
     public JLabel bgLabel[] = new JLabel[4];
 
 
     public UI(GameManager gameManager){
-        this.gameManager = gameManager;
+        this.gm = gameManager;
 
         createMainField();
-        displayText("testing displayText");
         generateScreen();
+        displayText("testing displayText");
+        displayInputBox();
 
         window.setVisible(true);
     }
@@ -63,7 +65,7 @@ public class UI{
 
     public void displayText(String message){
         messageText = new JTextArea(message);
-        messageText.setBounds(50, 425, 700, 150);
+        messageText.setBounds(50, 425, 700, 50);
         messageText.setBackground(Color.BLACK);
         messageText.setForeground(Color.WHITE);
         messageText.setEditable(false);
@@ -71,5 +73,16 @@ public class UI{
         messageText.setWrapStyleWord(true);
         messageText.setFont(new Font("Book Antique", Font.PLAIN, 20));
         window.add(messageText);
+    }
+
+    public void displayInputBox(){
+        inputBox = new JTextField(10);
+        inputBox.setBounds(50, 490, 150, 30);
+        inputBox.setEditable(true);
+        inputBox.setToolTipText("Enter some words...");
+
+        inputBox.setFont(new Font("Book Antique", Font.PLAIN, 20));
+        window.add(inputBox);
+        
     }
 }
