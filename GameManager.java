@@ -1,3 +1,5 @@
+import java.awt.Color;
+
 public class GameManager {
 
     UI ui;
@@ -16,5 +18,19 @@ public class GameManager {
 
     public void startGame(){
         reception.enterRoom();
+    }
+
+    public void delay(int seconds){
+        try {
+            Thread.sleep(seconds*1000);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+    }
+
+    public void endGame(){
+        ui.inputBox.setText("Game Over x_x");
+        ui.inputBox.setEditable(false);
+        ui.inputBox.setBackground(Color.RED);
     }
 }

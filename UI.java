@@ -1,4 +1,6 @@
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
@@ -8,6 +10,7 @@ public class UI{
     JFrame window;
     public JTextArea messageText;
     public JTextField inputBox;
+    public String inputTxt;
     public JPanel bgPanel[] = new JPanel[4]; 
     public JLabel bgLabel[] = new JLabel[4];
 
@@ -45,27 +48,14 @@ public class UI{
         bgLabel[bgNum].setIcon(bgIcon);
     }
 
-    public void createObject(int bgNum, int objx, int objy, int objWidth, int objHeight, String objFileName){
-        JLabel objLabel = new JLabel();
-        objLabel.setBounds(objx, objy, objWidth, objHeight);
-
-        ImageIcon objIcon = new ImageIcon(getClass().getClassLoader().getResource(objFileName));
-        objLabel.setIcon(objIcon);
-
-        bgPanel[1].add(objLabel);
-        bgPanel[1].add(bgLabel[1]);
-    }
-
     public void generateScreen(){
         //First room - Scene 1
-        
-        createBackground(1, "temp.png");
-        createObject(1, 440, 140, 200, 200, "temp2.png");
+        createBackground(1, "reception.jpg");
     }
 
     public void displayText(String message){
         messageText = new JTextArea(message);
-        messageText.setBounds(50, 425, 700, 50);
+        messageText.setBounds(50, 425, 700, 70);
         messageText.setBackground(Color.BLACK);
         messageText.setForeground(Color.WHITE);
         messageText.setEditable(false);
@@ -77,12 +67,30 @@ public class UI{
 
     public void displayInputBox(){
         inputBox = new JTextField(10);
-        inputBox.setBounds(50, 490, 150, 30);
+        inputBox.setBounds(50, 510, 200, 30);
         inputBox.setEditable(true);
-        inputBox.setToolTipText("Enter some words...");
+        inputBox.setBackground(Color.WHITE);
+        inputBox.setToolTipText("Enter name here...");
+
+        inputBox.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                inputTxt = inputBox.getText();
+                System.out.println(inputTxt);
+                inputBox.setBackground(Color.GRAY);
+                inputBox.setEditable(false);
+            }
+        });
 
         inputBox.setFont(new Font("Book Antique", Font.PLAIN, 20));
         window.add(inputBox);
         
+    }
+
+    public void resetInputBox(){
+        inputBox.setEditable(true);
+        inputBox.setBackground(Color.WHITE);
+        inputBox.setText("");
+        inputBox.setToolTipText("Enter answer here...");
+        inputTxt = "";
     }
 }
