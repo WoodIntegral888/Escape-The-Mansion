@@ -11,7 +11,7 @@ public class NumberLock {
         boolean correct = false;
 
         while (!correct) {
-            game_manager.ui.messageText.setText("4-digit code:");
+            game_manager.ui.messageText.setText("Enter the 4-digit code:");
             game_manager.ui.resetInputBox();
 
             String enteredTxt = game_manager.ui.inputTxt;
@@ -22,10 +22,12 @@ public class NumberLock {
             user_input = enteredTxt;
 
             if (validateInput(user_input)) {
-                game_manager.ui.messageText.setText("right ur done");
+                game_manager.ui.messageText.setText("Congrats you completed the game!\n");
+                game_manager.delay(2);
+                game_manager.ui.messageText.setText("I am sadden to not keep you forever..");
                 correct = true;
             } else {
-                game_manager.ui.messageText.setText("wrong");
+                game_manager.ui.messageText.setText("Wrong!!!");
                 game_manager.ui.resetInputBox();
             }
         }

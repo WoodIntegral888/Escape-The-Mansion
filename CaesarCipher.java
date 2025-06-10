@@ -8,8 +8,8 @@ public class CaesarCipher {
     }//this is the constructor.
 
     public void askPuzzle(GameManager game_manager) {
-        String cipherRiddle = "prior to dycrpt"; 
-        game_manager.ui.messageText.setText("Riddle:\n" + cipherRiddle + "\nUse the key from riddle to dycrpt the cipher.");
+        String cipherRiddle = "xli tewwasvh csy wiio mw rsxlmrk ex eppp"; 
+        game_manager.ui.messageText.setText("Secret Passage:\n" + cipherRiddle + "\n Use the key from riddle to dycrpt the cipher.");
         game_manager.ui.resetInputBox();//displaying the cipher prior to dycription and asking user input.
 
         boolean rightanswer = false;
@@ -23,10 +23,10 @@ public class CaesarCipher {
             userInput = enteredTxt;
 
             if (validateInput(userInput)) {
-                game_manager.ui.messageText.setText("right");
+                game_manager.ui.messageText.setText("Yes, you are right.");
                 rightanswer = true;
             } else {
-                game_manager.ui.messageText.setText("wrong");
+                game_manager.ui.messageText.setText("Ugh, you are wrong.");
                 game_manager.ui.resetInputBox();
                 //checking for correct input
             }
@@ -34,7 +34,7 @@ public class CaesarCipher {
     }
 
     public boolean validateInput(String input) {
-        String correct_decrypt = decrypt("prior to dycrpt", 4);
+        String correct_decrypt = decrypt("xli tewwasvh csy wiio mw rsxlmrk ex eppp", 4);
         return input.equalsIgnoreCase(correct_decrypt); 
     } // <- added this missing closing bracket
 

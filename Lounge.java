@@ -16,7 +16,7 @@ public class Lounge extends Room {
     public void enterRoom() {
         showInstructions();
 
-        game_manager.ui.messageText.setText("start message");
+        game_manager.ui.messageText.setText("Now let us begin..");
         game_manager.delay(2);
 
         end_word = recursiveRiddlePuzzle1.check_recursion(0, "");
@@ -26,6 +26,7 @@ public class Lounge extends Room {
             game_manager.delay(2);
             caesarCipherPuzzle2.askPuzzle(game_manager);
 
+            game_manager.ui.messageText.setText("Congrats! The code is 0000");
             game_manager.delay(2);
             numLockPuzzleFinal.askPuzzle();
         }
@@ -33,6 +34,8 @@ public class Lounge extends Room {
 
     @Override
     public void showInstructions() {
-        game_manager.ui.messageText.setText("escpe the room");
+        game_manager.ui.messageText.setText("Welcome to the second room. Excited to have you here....\n I can't wait to keep you here.");
+        game_manager.delay(2);
+
     }
 }
