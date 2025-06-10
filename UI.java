@@ -46,11 +46,14 @@ public class UI{
 
         ImageIcon bgIcon = new ImageIcon(getClass().getClassLoader().getResource(bgFileName));
         bgLabel[bgNum].setIcon(bgIcon);
+
+        bgPanel[bgNum].add(bgLabel[bgNum]);
+
     }
 
     public void generateScreen(){
         //First room - Scene 1
-        createBackground(1, "reception.jpg");
+        createBackground(1, "reception.png");
     }
 
     public void displayText(String message){

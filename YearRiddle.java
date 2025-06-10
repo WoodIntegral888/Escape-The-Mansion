@@ -16,7 +16,8 @@ public class YearRiddle implements Puzzles{
     public void askPuzzle() {
         //Following riddle is inspired by user Vaiist on Reddit:
         //  https://www.reddit.com/r/riddles/comments/2o9oza/a_riddle_with_the_answer_of_365/
-        gm.ui.messageText.setText("Sometimes I leap and I can be measured like eggs. What am I? "+
+        gm.ui.messageText.setText("Sometimes I leap, but that's just one spec, \n"+
+                            "I can be measured like eggs, or cards in a deck. What am I? \n"+
                             "You have "+(Constants.MAX_ATTEMPTS-attemptsCount)+" chances to answer...");
         gm.ui.resetInputBox();
         String enteredTxt = gm.ui.inputTxt;
@@ -30,7 +31,8 @@ public class YearRiddle implements Puzzles{
 
         while (!isCorrectAnswer && attemptsCount<Constants.MAX_ATTEMPTS){
 
-            gm.ui.messageText.setText("Sometimes I leap and I can be measured like eggs. What am I? "+ 
+        gm.ui.messageText.setText("Sometimes I leap, but that's just one spec, \n"+
+                            "I can be measured like eggs, or cards in a deck. What am I? \n"+
                             "You have "+(Constants.MAX_ATTEMPTS-attemptsCount)+" chances to answer...");
 
             enteredTxt = gm.ui.inputTxt;
@@ -49,7 +51,7 @@ public class YearRiddle implements Puzzles{
         }
         else{
             gm.ui.messageText.setText("Good job! Beginner's luck I suppose...");
-            gm.delay(2);
+            gm.delay(4);
         }
     }
 
@@ -61,14 +63,14 @@ public class YearRiddle implements Puzzles{
                 input.equals("YEAR ") || input.equals("YEARS ") ){
                 gm.ui.messageText.setText("You are correct!");
                 gm.ui.inputBox.setBackground(Color.GREEN);
-                gm.delay(2);
+                gm.delay(3);
                 return true;
             }
         }
         catch(InputMismatchException e){
             gm.ui.messageText.setText(Constants.ERROR_INVALID_INPUT);
             gm.ui.messageText.setText("Change");
-            gm.delay(1);
+            gm.delay(2);
         }
         gm.ui.messageText.setText("You are incorrect!");
         gm.ui.inputBox.setBackground(Color.RED);

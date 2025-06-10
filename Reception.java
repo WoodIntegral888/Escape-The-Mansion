@@ -41,12 +41,12 @@ public class Reception extends Room {
         gm.ui.messageText.setText("Hello, "+userName+"! Welcome to 'Escape the Mansion'! "+
                                     "Let's begin with our first riddle... ");
         String[][] sortedNames = insertionSort(clientNames);
-        gm.delay(3);
+        gm.delay(8);
 
         yearRiddle.askPuzzle();
         gm.ui.resetInputBox();
 
-        gm.ui.messageText.setText("I seem to have lost track of the time... What year is it?");
+        gm.ui.messageText.setText("I need to record a date for your visit...Remind me, what year is it?");
         enteredTxt = gm.ui.inputTxt;
         while (enteredTxt=="" || enteredTxt==null){
             System.out.println("");
@@ -59,12 +59,12 @@ public class Reception extends Room {
 
         gm.ui.messageText.setText("Onto the next riddle... You will need to solve this to "+
                                     "move on from the reception room.");
-        gm.delay(2);
+        gm.delay(6);
         namePadlock.askPuzzle();
         
         gm.ui.messageText.setText("The bookkeeper will look for the index of that year, "+
         "then provide you with the name of the same index in the alphabetically sorted list of clients.");
-        gm.delay(5);
+        gm.delay(10);
         int yearIDX = findYear(sortedYears, 1969);
 
         int targetRow = (int) yearIDX/5;
@@ -74,7 +74,7 @@ public class Reception extends Room {
         gm.ui.messageText.setText("...");
         gm.delay(2);
         gm.ui.messageText.setText("Aha! The name you are looking for is "+ targetName);
-        gm.delay(2);
+        gm.delay(3);
 
         namePadlock.unlockPadlock();
 
@@ -198,7 +198,7 @@ public class Reception extends Room {
                 num = Integer.parseInt(input);
                 if (num==0){
                     gm.ui.messageText.setText("Surely this isn't the beginning of time...");
-                    gm.delay(2);
+                    gm.delay(3);
                 }
                 else{
                     gm.ui.messageText.setText("Ahh, yes... "+num);
@@ -208,10 +208,9 @@ public class Reception extends Room {
             } catch (NumberFormatException e) {
                 gm.ui.messageText.setText(Constants.ERROR_INVALID_INPUT);
             }
-            System.out.println("here");
             gm.ui.resetInputBox();
             num=0;
-            gm.delay(1);
+            gm.delay(2);
 
             gm.ui.messageText.setText("Try again... What year is it?");
             String enteredTxt = gm.ui.inputTxt;
