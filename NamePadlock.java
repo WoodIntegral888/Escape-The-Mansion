@@ -65,10 +65,11 @@ public class NamePadlock implements Puzzles{
             }
             userInput = enteredTxt;
             isCorrectAnswer = validateInput(userInput); //Once again checking for correct answer
+            attemptsCount++;
         }
 
         //If they maxed out their available number of attempts...
-        if (attemptsCount>=Constants.MAX_ATTEMPTS){
+        if (attemptsCount>Constants.MAX_ATTEMPTS){
             gm.ui.messageText.setText("Unfortunately, the bookkeeper has no more patience for your pathetic"+
             " attempts. You will spend the rest of your days rotting in this reception room...");
             gm.endGame(); //Ends game and informed them that they have lost

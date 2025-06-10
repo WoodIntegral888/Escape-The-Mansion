@@ -68,17 +68,21 @@ public class YearRiddle implements Puzzles{
             }
             userInput = enteredTxt;
             isCorrectAnswer = validateInput(userInput);
+            attemptsCount++;
         }
 
         //If game ended because they maxed out their attempts...
-        if (attemptsCount>=Constants.MAX_ATTEMPTS){
+        if (attemptsCount>Constants.MAX_ATTEMPTS){
             gm.ui.messageText.setText("Unfortunately, the bookkeeper has no more patience for your pathetic"+
             " attempts. You will spend the rest of your days rotting in this reception room...");
             gm.endGame(); //Informs them the game ended and ends game
         }
-        else{ //Informing them they got it right
+        else if (isCorrectAnswer){ //Informing them they got it right
             gm.ui.messageText.setText("Good job! Beginner's luck I suppose...");
             gm.delay(4); //Delay to allow for reading the message
+        }
+        else{
+            gm.endGame();
         }
     }
 
