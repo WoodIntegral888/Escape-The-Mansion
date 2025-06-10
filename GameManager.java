@@ -6,6 +6,8 @@
 //Imports
 import java.awt.Color;
 
+import javax.swing.JFrame;
+
 /**
  * The GameManager class is the central controller of the game
  * It allows for management and game initializing, switching between rooms, 
@@ -15,6 +17,7 @@ public class GameManager {
     
     UI ui; //Initalizing the UI that manage the graphics in Java Swing
     Reception reception; //Initializing the Reception room
+    Lounge lounge; //Initializing the Lounge room
 
     /**
      * Initializes a GameManager instance and queues the start of the game
@@ -33,6 +36,7 @@ public class GameManager {
     public GameManager(){
         ui = new UI(this); //Instantiates UI
         reception = new Reception(this); //Instantiates reception room
+        lounge = new Lounge(this); //Instantiates lounge room
     }
 
     /**
@@ -40,7 +44,9 @@ public class GameManager {
      * This acts as the guide from which the rooms are played
      */
     public void startGame(){
-        reception.enterRoom(); //starts with reception room;
+        reception.enterRoom(); //starts with reception room
+        ui.generateScreen(2);
+        lounge.enterRoom(); //Starts lounge when reception is done
     }
 
     /**
@@ -65,5 +71,9 @@ public class GameManager {
         ui.inputBox.setText("Game Over x_x"); //Shows game over text
         ui.inputBox.setEditable(false); //Prevents any more inputs
         ui.inputBox.setBackground(Color.RED); //Extra to show game over
+        delay(7);
+        ui.messageText.setText("You lost...");
+        delay(2);
+        ui.window.dispose(); //Closes game
     }
 } //Vishwa
